@@ -12,7 +12,10 @@ import java.util.Map;
 
 
 @Controller
+
 public class UserController {
+
+    private User user;
 
     private final UserServiceImp userServiceImp;
 
@@ -29,7 +32,7 @@ public class UserController {
         return modelAndView;
     }
 
-    @GetMapping("/new")
+    @GetMapping("/new_user")
     public String createUser(Map<String, Object> map) {
         User user = new User();
         map.put("user", user);
@@ -37,7 +40,11 @@ public class UserController {
     }
 
     @PostMapping("/save")
-    public String saveUser(@ModelAttribute("user") User user) {
+    public String saveUser(User user) {
+        String name = user.getName();
+        String lastname = user.getLastName();
+        int age  = user.getAge();
+        String email = user.getEmail();
         userServiceImp.save(user);
         return "redirect:/";
     }

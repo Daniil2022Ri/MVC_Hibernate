@@ -24,6 +24,7 @@ public class UserServiceImp {
 
     @Transactional
     public void save(User user) {
+        System.out.println("Save User " + user + user.getName() );
         userService.save(user);
     }
 
