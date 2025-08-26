@@ -23,7 +23,7 @@ public class UserController {
 
     @GetMapping("/")
     public ModelAndView home() {
-        ModelAndView modelAndView = new ModelAndView("home");
+        ModelAndView modelAndView = new ModelAndView("index");
         List<User> allUsersList = userServiceImp.findAll();
         modelAndView.addObject("allUsers", allUsersList);
         return modelAndView;
