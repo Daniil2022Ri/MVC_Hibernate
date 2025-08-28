@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" name="MVC_Hibernate">
+    <output-path>$PROJECT_DIR$/out/artifacts/MVC_Hibernate</output-path>
+    <root id="root">
+      <element id="archive" name="MVC_Hibernate.jar">
+        <element id="module-output" name="MVC_Hibernate" />
+      </element>
+    </root>
+  </artifact>
+</component>
