@@ -11,7 +11,6 @@ import java.util.Map;
 
 
 @Controller
-
 public class UserController {
 
     private User user;

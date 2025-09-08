@@ -4,112 +4,85 @@
 
     <groupId>org.example</groupId>
     <artifactId>MVC_Hibernate</artifactId>
-    <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
-    <name>MVC_Hibernate Maven Webapp</name>
+    <name>MVC_Hibernate</name>
     <url>http://maven.apache.org</url>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.7.18</version>
+        <relativePath/>
+    </parent>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <spring.version>5.1.5.RELEASE</spring.version>
-        <hibernate.version>5.4.1.Final</hibernate.version>
-        <javax.servlet.jsp.version>2.3.1</javax.servlet.jsp.version>
-        <javax.servlet.version>3.1.0</javax.servlet.version>
-        <jstl.version>1.2</jstl.version>
+        <java.version>1.8</java.version>
     </properties>
 
     <dependencies>
-        <!-- Spring Core -->
+        <!-- Spring Boot Web Starter (includes MVC and embedded Tomcat) -->
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>${spring.version}</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+        <!-- Spring Boot Data JPA Starter (for Hibernate integration) -->
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc</artifactId>
-            <version>${spring.version}</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
 
-        <!-- Spring ORM for Hibernate integration -->
+        <!-- Thymeleaf Starter for view templates -->
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-orm</artifactId>
-            <version>${spring.version}</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
 
-        <!-- Spring Data JPA for data access -->
-        <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-jpa</artifactId>
-            <version>2.1.5.RELEASE</version>
-        </dependency>
-
-        <!-- Hibernate Core -->
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-core</artifactId>
-            <version>${hibernate.version}</version>
-        </dependency>
-
-        <!-- MySQL JDBC driver -->
+        <!-- MySQL Connector -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.24</version>
-            <scope>runtime</scope>
+            <version>8.0.33</version>
         </dependency>
 
-        <!-- JSTL for JSP (not necessary if using Thymeleaf) -->
+        <!-- Spring Boot Test Starter -->
         <dependency>
-            <groupId>jstl</groupId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- JSTL (if still needed for some JSP compatibility, optional) -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
-            <version>${jstl.version}</version>
+            <version>1.2</version>
         </dependency>
 
-        <!-- Thymeleaf -->
-        <dependency>
-            <groupId>org.thymeleaf</groupId>
-            <artifactId>thymeleaf</artifactId>
-            <version>3.0.15.RELEASE</version>
-        </dependency>
-
-        <!-- Thymeleaf Spring integration -->
-        <dependency>
-            <groupId>org.thymeleaf</groupId>
-            <artifactId>thymeleaf-spring5</artifactId>
-            <version>3.0.15.RELEASE</version>
-        </dependency>
-
-        <!-- Spring Test (optional, for unit tests) -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-            <version>${spring.version}</version>
-            <scope>test</scope>
-        </dependency>
-
-        <!-- JUnit (optional, for unit tests) -->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>3.8.1</version>
-            <scope>test</scope>
-        </dependency>
-
+        <!-- Servlet API (provided scope, as Spring Boot embeds Tomcat) -->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <version>4.0.1</version>
+            <version>3.1.0</version>
             <scope>provided</scope>
         </dependency>
 
+        <!-- JSP API (optional, only if you plan to keep some JSPs) -->
+        <dependency>
+            <groupId>javax.servlet.jsp</groupId>
+            <artifactId>javax.servlet.jsp-api</artifactId>
+            <version>2.3.1</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
     <build>
-        <finalName>MVC_Hibernate</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
     </build>
 </project>

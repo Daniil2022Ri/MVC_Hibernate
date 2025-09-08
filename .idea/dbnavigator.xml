@@ -31,9 +31,7 @@
     <last-used-providers />
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files>
-      <object connection-id="325bf2b9-455c-4f79-a1aa-75159ee70cb3" object-ref="consoles/SpringMVC" />
-    </open-files>
+    <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="325bf2b9-455c-4f79-a1aa-75159ee70cb3" />
