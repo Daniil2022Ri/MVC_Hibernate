@@ -1,4 +1,4 @@
-Starting project eith tomCat eith Spring Boot
+Starting project eith tomCat(SpringMVC) eith Spring Boot(localhost)
 
 
 New User <img width="1716" height="333" alt="image" src="https://github.com/user-attachments/assets/839b885c-3fb8-4911-b4e6-c5401ddb12b7" />
