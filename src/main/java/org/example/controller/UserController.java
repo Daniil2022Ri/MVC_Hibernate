@@ -1,5 +1,6 @@
 package org.example.controller;
 
+import org.example.dao.UserDao;
 import org.example.model.User;
 import org.example.service.UserServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,8 @@ import java.util.Map;
 @Controller
 public class UserController {
 
-    private User user;
+    @Autowired
+    private UserDao userDao;
 
     private final UserServiceImp userServiceImp;
 

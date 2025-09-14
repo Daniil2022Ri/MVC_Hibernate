@@ -23,8 +23,8 @@
     <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
-    <connection id="325bf2b9-455c-4f79-a1aa-75159ee70cb3">
-      <console name="SpringMVC" type="STANDARD" schema="mysql" session="Main" />
+    <connection id="5abfdf0b-3fde-492f-8e86-8f989a4e57dd">
+      <console name="SpringBoot" type="STANDARD" schema="mysql" session="Main" />
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
@@ -36,15 +36,26 @@
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="325bf2b9-455c-4f79-a1aa-75159ee70cb3" />
   </component>
+  <component name="DBNavigator.Project.ExecutionManager">
+    <retain-sticky-names value="false" />
+  </component>
+  <component name="DBNavigator.Project.MethodExecutionManager">
+    <method-browser />
+    <execution-history>
+      <group-entries value="true" />
+      <execution-inputs />
+    </execution-history>
+    <execution-variables-cache />
+  </component>
   <component name="DBNavigator.Project.ObjectQuickFilterManager">
     <last-used-operator value="EQUAL" />
     <filters />
   </component>
   <component name="DBNavigator.Project.Settings">
     <connections>
-      <connection id="325bf2b9-455c-4f79-a1aa-75159ee70cb3" active="true" signed="true">
+      <connection id="5abfdf0b-3fde-492f-8e86-8f989a4e57dd" active="true" signed="true">
         <database>
-          <name value="SpringMVC" />
+          <name value="SpringBoot" />
           <description value="" />
           <database-type value="MYSQL" />
           <config-type value="BASIC" />
@@ -53,7 +64,7 @@
           <driver-library value="" />
           <driver value="" />
           <url-type value="DATABASE" />
-          <host value="127.0.0.1" />
+          <host value="localhost" />
           <port value="3307" />
           <database value="mysql" />
           <tns-folder value="" />

@@ -7,7 +7,6 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
-
 public class UserServiceImp {
 
     private final UserService userService;
