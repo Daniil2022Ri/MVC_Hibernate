@@ -10,7 +10,7 @@ import java.util.Objects;
 @Setter
 @Accessors(chain = true)
 @Entity
-@Table(name = "User")
+@Table(name =  "user")
 public class User {
 
     @Id
