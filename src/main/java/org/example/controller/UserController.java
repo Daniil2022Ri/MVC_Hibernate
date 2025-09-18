@@ -1,34 +1,28 @@
 package org.example.controller;
 
-import org.example.dao.UserDao;
 import org.example.model.User;
-import org.example.service.UserServiceImp;
+import org.example.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import java.util.List;
 import java.util.Map;
 
 
 @Controller
 public class UserController {
 
-    @Autowired
-    private UserDao userDao;
-
-    private final UserServiceImp userServiceImp;
+    private final UserService userService;
 
     @Autowired
-    public UserController(UserServiceImp userServiceImp) {
-        this.userServiceImp = userServiceImp;
+    public UserController(UserService userService) {
+        this.userService = userService;
     }
 
     @GetMapping("/")
     public ModelAndView home() {
         ModelAndView modelAndView = new ModelAndView("index");
-        List<User> allUsersList = userServiceImp.findAll();
-        modelAndView.addObject("allUsers", allUsersList);
+        modelAndView.addObject("allUsers", userService.findAll());
         return modelAndView;
     }
 
@@ -40,33 +34,29 @@ public class UserController {
     }
 
     @PostMapping("/save")
-    public String saveUser(User user) {
-        String name = user.getName();
-        String lastname = user.getLastName();
-        int age  = user.getAge();
-        String email = user.getEmail();
-        userServiceImp.save(user);
+    public String saveUser(@ModelAttribute User user) {
+        userService.save(user);
         return "redirect:/";
     }
 
     @GetMapping("/delete")
-    public String deleteUser(User user) {
-        userServiceImp.delete(user);
+    public String deleteUser(@RequestParam Long id) {
+        userService.deleteById(id);
         return "redirect:/";
     }
 
     @GetMapping("/edit")
     public ModelAndView editPage(@RequestParam Long id) {
         ModelAndView modelAndView = new ModelAndView("edit");
-        User user = userServiceImp.findById(id);
+        User user = userService.findById(id);
         modelAndView.addObject("user", user);
         return modelAndView;
     }
 
     @PostMapping("/edit/{id}")
-    public String editUser(@RequestParam("id") Long id, @ModelAttribute("user") User user) {
+    public String editUser(@PathVariable("id") Long id, @ModelAttribute User user) {
         user.setId(id);
-        userServiceImp.updateUser(user);
+        userService.save(user);
         return "redirect:/";
     }
 }

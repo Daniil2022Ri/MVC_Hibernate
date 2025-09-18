@@ -1,10 +1,12 @@
 package org.example.service;
 
 import org.example.model.User;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
+import java.util.List;
 
-@Repository
-public interface UserService extends CrudRepository<User, Long> {
 
+public interface UserService {
+    List<User> findAll();
+    void save(User user);
+    void deleteById(Long id);
+    User findById(Long id);
 }
