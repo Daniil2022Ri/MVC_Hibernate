@@ -4,12 +4,17 @@ import org.example.model.User;
 import org.example.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
-import java.util.Map;
+
+import javax.validation.Valid;
+import java.util.List;
+import java.util.Optional;
 
 
 @Controller
+@RequestMapping("/users")
 public class UserController {
 
     private final UserService userService;
@@ -19,44 +24,51 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/")
-    public ModelAndView home() {
-        ModelAndView modelAndView = new ModelAndView("index");
-        modelAndView.addObject("allUsers", userService.findAll());
-        return modelAndView;
+    @GetMapping
+    public String allUsers(Model model) {
+        List<User> users = userService.findAll();
+        model.addAttribute("allUsers", users);
+        return "index";
     }
 
     @GetMapping("/new_user")
-    public String createUser(Map<String, Object> map) {
-        User user = new User();
-        map.put("user", user);
+    public String createUserForm(@ModelAttribute("user") User user) {
+        System.out.println("new user");
         return "new_user";
     }
 
     @PostMapping("/save")
-    public String saveUser(@ModelAttribute User user) {
+    public String createUser(@ModelAttribute("user") User user) {
         userService.save(user);
-        return "redirect:/";
-    }
-
-    @GetMapping("/delete")
-    public String deleteUser(@RequestParam Long id) {
-        userService.deleteById(id);
-        return "redirect:/";
+        return "redirect:/users";
     }
 
     @GetMapping("/edit")
-    public ModelAndView editPage(@RequestParam Long id) {
-        ModelAndView modelAndView = new ModelAndView("edit");
-        User user = userService.findById(id);
-        modelAndView.addObject("user", user);
-        return modelAndView;
+    public String editUserForm(@RequestParam("id") Long id, Model model) {
+        Optional<User> userById = userService.findById(id);
+
+        if (userById.isPresent()) {
+            model.addAttribute("user", userById.get());
+            return "edit";
+        } else {
+            return "redirect:/users";
+        }
     }
 
-    @PostMapping("/edit/{id}")
-    public String editUser(@PathVariable("id") Long id, @ModelAttribute User user) {
-        user.setId(id);
-        userService.save(user);
-        return "redirect:/";
+    @PostMapping("/edit")
+    public String editUser(@ModelAttribute("user") @Valid User user,
+                           BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "user/edit-user";
+        }
+
+        userService.updateUser(user);
+        return "redirect:/users";
+    }
+
+    @GetMapping("/delete")
+    public String deleteUser(@RequestParam("id") Long id) {
+        userService.deleteById(id);
+        return "redirect:/users";
     }
 }

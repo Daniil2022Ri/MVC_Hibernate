@@ -16,7 +16,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(columnDefinition = "TEXT CHARACTER SET utf8")
+    @Column(columnDefinition = "VARCHAR(255)")
     private String name;
     @Column(name = "lastName")
     private String lastName;

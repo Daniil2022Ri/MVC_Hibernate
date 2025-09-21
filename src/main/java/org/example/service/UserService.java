@@ -2,11 +2,13 @@ package org.example.service;
 
 import org.example.model.User;
 import java.util.List;
+import java.util.Optional;
 
 
 public interface UserService {
-    List<User> findAll();
     void save(User user);
+    List<User> findAll();
+    Optional<User> findById(Long id);
+    void updateUser(User user);
     void deleteById(Long id);
-    User findById(Long id);
 }

@@ -10,7 +10,7 @@
     <h1>User Manager</h1>
 
     <h3>
-        <a href="/new_user">New User</a>
+        <a href="/users/new_user">New User</a>  <!-- Исправлено -->
     </h3>
 
     <table border="1" cellpadding="5">
@@ -29,9 +29,9 @@
             <td th:text="${user.age}"></td>
             <td th:text="${user.email}"></td>
             <td>
-                <a th:href="@{/edit(id=${user.id})}">Edit</a>
+                <a th:href="@{/users/edit(id=${user.id})}">Edit</a>  <!-- Исправлено -->
                 &nbsp;&nbsp;&nbsp;
-                <a th:href="@{/delete(id=${user.id})}">Delete</a>
+                <a th:href="@{/users/delete(id=${user.id})}">Delete</a>  <!-- Исправлено -->
             </td>
         </tr>
     </table>

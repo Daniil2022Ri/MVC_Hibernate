@@ -8,7 +8,7 @@
 <body>
 <div align="center">
     <h1>Edit User</h1>
-    <form th:action="@{/edit/{id}(id=${user.id})}" method="post" th:object="${user}">
+    <form th:action="@{/users/edit}" method="post" th:object="${user}">  <!-- Исправлено -->
         <input type="hidden" th:field="*{id}"/>
         <label for="name">Name:</label>
         <input type="text" th:field="*{name}" id="name" required/>
